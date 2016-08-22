@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "899612024196",
+    "firebase_url": "https://taruibe.firebaseio.com",
+    "project_id": "project-5346656113217579903",
+    "storage_bucket": "project-5346656113217579903.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899612024196:android:7d67c50d74ec6b32",
+        "android_client_info": {
+          "package_name": "com.a19hour.tar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899612024196-o7h2vtm8su3kmu50iak1i75dmbup6cds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFTU3_91QmS8IGcnjxifNfQWySHfT7tfk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

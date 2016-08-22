@@ -1,0 +1,51 @@
+{
+  "survey_properties": {
+    "intro_message": "Please finish this survey. Otherwise you will be prompted to complete next time",
+    "end_message": "Thank you for having the time to take our survey.",
+    "skip_intro": false
+  },
+  "questions": [
+    {
+      "question_type": "String",
+      "question_title": "What was the name of the tutor? (Chinese characters or Pinyin)",
+      "description": "Chinese characters or Pinyin",
+      "required": true
+    },
+    {
+      "question_type": "String",
+      "question_title": "What was the class you took?",
+      "description": "",
+      "required": true
+    },
+    {
+      "question_type": "Number",
+      "question_title": "How many lessons did you take?",
+      "description": "",
+      "required": true
+    },
+    {
+      "question_title": "What is today's date? (MMDD)",
+      "description": "MMDD",
+      "required": true,
+      "question_type": "Number"
+    },
+    {
+      "question_type": "Number",
+      "question_title": "Was it fun (out of 10)",
+      "description": "out of 10",
+      "required": true
+    },
+    {
+      "question_type": "Number",
+      "question_title": "Was it informative (out of 10)",
+      "description": "out of 10",
+      "required": true
+    },
+    {
+      "question_type": "Number",
+      "question_title": "General rating (out of 10)",
+      "description": "out of 10",
+      "required": true
+    }
+  ]
+}
