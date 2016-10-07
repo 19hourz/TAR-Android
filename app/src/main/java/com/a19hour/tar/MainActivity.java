@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.wilddog.client.AuthData;
 import com.wilddog.client.ChildEventListener;
@@ -87,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
                 attemptSigninClass();
             }
         });
-        Button signoutButton = (Button) findViewById(R.id.sign_out_button);
-        signoutButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                attemptSignout();
-            }
-        });
+//        Button signoutButton = (Button) findViewById(R.id.sign_out_button);
+//        signoutButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                attemptSignout();
+//            }
+//        });
         EditText accessCode = (EditText) findViewById(R.id.accesscode);
         accessCode.requestFocus();
         //set the default alert builder
@@ -112,14 +113,42 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), CurrentClassActivity.class);
             startActivity(intent);
         }
+        // ad place
+//        AdSettings.setKey(new String[]{"baidu","北京"}); //创建广告view
+//        String adPlaceID = "2871195";//重要:请填上你的代码位ID,否则无法请求到广告
+//        AdView adView = new AdView(this,adPlaceID);
+//        RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_relative_layout);
+//        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+//        main_layout.addView(adView,layoutParams);
+        //
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ref.unauth();
     }
 
     private void attemptSigninClass(){
         EditText accessCodeText = (EditText) findViewById(R.id.accesscode);
         accessCode = accessCodeText.getText().toString();
-        progressBar.setVisibility(View.VISIBLE);
-        mSigninClassTask = new SigninClassTask(accessCode);
-        mSigninClassTask.execute((Void) null);
+        Integer accessNum = 0;
+        if (accessCode != null) {
+            accessNum = Integer.parseInt(accessCode);
+        } else {
+            accessNum = 0;
+        }
+        if (accessNum < 10000 || accessNum > 99999){
+            builder.setMessage("Access code should be a five-digit number");
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+            mSigninClassTask = new SigninClassTask(accessCode);
+            mSigninClassTask.execute((Void) null);
+        }
     }
 
     private void attemptSignout(){

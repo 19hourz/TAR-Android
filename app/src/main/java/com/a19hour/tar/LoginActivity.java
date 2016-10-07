@@ -68,9 +68,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         Wilddog.setAndroidContext(this);
         setContentView(R.layout.activity_login);
+        ref = new Wilddog("https://tar.wilddogio.com");
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        //populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -430,8 +431,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
                 @Override
                 public void onAuthenticationError(WilddogError error) {
+                    System.out.println("Error!!!!!" + error.toString());
                     mPasswordView.setError(getString(R.string.error_incorrect_password));
                     mPasswordView.requestFocus();
+                    mAuthTask = null;
+                    showProgress(false);
                 }
             };
             ref.authWithPassword(mEmail, mPassword, authResultHandler);
@@ -494,13 +498,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         }
                         @Override
                         public void onAuthenticationError(WilddogError error) {
+                            System.out.println("Error!!!!!" + error.toString());
                             mPasswordView.setError(getString(R.string.error_incorrect_password));
                             mPasswordView.requestFocus();
+                            mRegisterTask = null;
+                            showProgress(false);
                         }
                     });
                 }
                 @Override
                 public void onError(WilddogError error) {
+                    mRegisterTask = null;
+                    showProgress(false);
 
                 }
             };
